@@ -1,0 +1,26 @@
+name: Auto Merge Dev to Pre-Prod
+
+on:
+  push:
+    branches:
+      - dev  # Déclenche le workflow uniquement après push sur dev
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Merge dev into pre-prod
+        run: |
+          git fetch origin pre-prod
+          git checkout pre-prod
+          git merge --no-ff origin/dev -m "Automated merge of dev into pre-prod"
+          git push origin pre-prod
