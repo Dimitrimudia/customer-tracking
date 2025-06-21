@@ -3,10 +3,13 @@ const cors = require('cors');
 const axios = require('axios');
 require('dotenv').config();
 
+//ajouter la configuration de l'environnement
+// Initialisation de l'application Express
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Configuration de l'URL de Logstash
 const LOGSTASH_URL = process.env.LOGSTASH_URL || 'http://localhost:5044';
 
 // Endpoint de réception
