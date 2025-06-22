@@ -22,5 +22,5 @@ jobs:
         run: |
           git fetch origin pre-prod
           git checkout pre-prod
-          git merge --no-ff origin/dev -m "Automated merge of dev into pre-prod"
+          git merge --no-ff origin/dev --allow-unrelated-histories -m "Automated merge of dev into pre-prod"
           git push origin pre-prod
