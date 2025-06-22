@@ -1,4 +1,6 @@
 name: Auto Merge Dev to Pre-Prod
+env:
+    TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 on:
   push:
